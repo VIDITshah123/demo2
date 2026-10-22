@@ -53,6 +53,7 @@ export default function AtAGlance() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className="stat-big-number"><CountUpNumber end={83} /></span>
+            <div className="stat-accent-line" />
             <span className="stat-text-label">TOTAL REVIEWS & SATISFACTION</span>
           </motion.div>
 
@@ -64,6 +65,7 @@ export default function AtAGlance() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <span className="stat-big-number"><CountUpNumber end={42} /></span>
+            <div className="stat-accent-line" />
             <span className="stat-text-label">YEARS COMBINED EXPERIENCE</span>
           </motion.div>
 
@@ -75,6 +77,7 @@ export default function AtAGlance() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <span className="stat-big-number"><CountUpNumber end={67} /></span>
+            <div className="stat-accent-line" />
             <span className="stat-text-label">CURATED DEVELOPMENTS</span>
           </motion.div>
 
@@ -86,6 +89,7 @@ export default function AtAGlance() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <span className="stat-big-number"><CountUpNumber end={98} /></span>
+            <div className="stat-accent-line" />
             <span className="stat-text-label">SATISFACTION RATE (%)</span>
           </motion.div>
         </div>
