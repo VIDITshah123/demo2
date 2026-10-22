@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Lenis from 'lenis';
+import { motion, useScroll } from 'framer-motion';
 
 import CustomCursor from './components/CustomCursor';
 import TopHeader from './components/TopHeader';
@@ -31,6 +32,9 @@ export default function App() {
   const [isShortlistOpen, setIsShortlistOpen] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState(null);
   const [toast, setToast] = useState({ visible: false, message: '' });
+
+  // Global Scroll Reading Progress
+  const { scrollYProgress } = useScroll();
 
   // Initial saved properties
   const [savedItems, setSavedItems] = useState([
@@ -136,6 +140,12 @@ export default function App() {
 
   return (
     <div className="site-wrapper" id="top">
+      {/* Global Luxury Scroll Progress Line (Top of viewport) */}
+      <motion.div 
+        className="global-luxury-scroll-line" 
+        style={{ scaleX: scrollYProgress, transformOrigin: '0%' }} 
+      />
+
       {/* Custom Mouse Cursor */}
       <CustomCursor isHovering={isHovering} />
 
