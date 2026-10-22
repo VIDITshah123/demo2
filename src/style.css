@@ -1144,11 +1144,17 @@ button, input, select, textarea {
   font-size: 96px;
   font-weight: 400;
   line-height: 1;
-  color: rgba(21, 62, 77, 0.45); /* Resorto Signature Muted Teal */
+  color: rgba(120, 200, 225, 0.75); /* Lighter, elegant luminous tone */
   position: relative;
   z-index: 0;
   user-select: none;
   margin-right: -20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.stat-item:hover .stat-big-number {
+  color: var(--gold);
+  transform: translateY(-2px);
 }
 
 .stat-text-label {
