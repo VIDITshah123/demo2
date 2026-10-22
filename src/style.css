@@ -1448,15 +1448,16 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   PHOTO SCROLL GALLERY (Continuous Auto-Gliding Horizon & Touch Pause)
+   PHOTO SCROLL GALLERY (Ultra-Smooth GPU Accelerated Marquee & Calm Speed)
    ========================================================================== */
 .gallery-auto-section {
   position: relative;
   width: 100%;
   background-color: var(--background);
   overflow: hidden;
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  contain: paint layout;
 }
 
 .gallery-auto-container {
@@ -1527,6 +1528,7 @@ button, input, select, textarea {
   user-select: none;
   cursor: grab;
   padding: 4px 0;
+  contain: paint;
 }
 
 .auto-gallery-row-wrapper:active {
@@ -1540,46 +1542,46 @@ button, input, select, textarea {
   gap: 14px;
   width: max-content;
   will-change: transform;
+  transform: translateZ(0);
 }
 
-/* Legacy & backward compatibility styles */
-.horizontal-slider-section {
-  position: relative;
-  height: 240vh;
-  background-color: var(--background);
+/* --------------------------------------------------------------------------
+   👉 ADJUST PHOTO GALLERY (VISUAL ARCHIVE) SPEED HERE:
+   - Change '55s' / '62s' to a HIGHER number (e.g., 75s, 90s) to make it SLOWER
+   - Change '55s' / '62s' to a LOWER number (e.g., 35s, 40s) to make it FASTER
+   -------------------------------------------------------------------------- */
+/* Row 1: Smooth Glide Left (55 seconds per cycle - calm & majestic) */
+.auto-frame.glide-normal {
+  animation: galleryGlideLeft 55s linear infinite; /* 👈 ROW 1 SPEED */
 }
 
-.camera {
-  position: sticky;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  overflow: hidden;
-  padding-top: 100px;
-  padding-bottom: 24px;
+/* Row 2: Smooth Glide Right (62 seconds per cycle - subtle parallax offset) */
+.auto-frame.glide-reverse {
+  animation: galleryGlideRight 62s linear infinite; /* 👈 ROW 2 SPEED */
 }
 
-.frame {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  width: max-content;
-  will-change: transform;
+/* Pause smoothly when row is hovered or touched */
+.auto-gallery-row-wrapper:hover .auto-frame,
+.auto-gallery-row-wrapper.is-paused .auto-frame {
+  animation-play-state: paused;
 }
 
-.frame-reverse {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  width: max-content;
-  will-change: transform;
+@keyframes galleryGlideLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes galleryGlideRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .gallery-scroll-item {
@@ -1592,6 +1594,7 @@ button, input, select, textarea {
   border-radius: var(--radius-none);
   cursor: pointer;
   background-color: #1a1a1a;
+  transform: translateZ(0);
 }
 
 .gallery-scroll-item img {
@@ -1599,25 +1602,25 @@ button, input, select, textarea {
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
 }
 
 .gallery-scroll-item:hover img {
   transform: scale(1.06);
 }
 
-/* Hover overlay matching Resorto room-hover-wrapper */
+/* Hover overlay: High-performance crisp opacity without expensive blur */
 .room-hover-wrapper {
   position: absolute;
   inset: 0;
-  background: rgba(14, 28, 28, 0.72);
-  backdrop-filter: blur(4px);
+  background: rgba(14, 28, 28, 0.82);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
   z-index: 3;
 }
 
@@ -1672,8 +1675,7 @@ button, input, select, textarea {
 .centerpiece-wordmark-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(10, 20, 20, 0.78);
-  backdrop-filter: blur(2px);
+  background-color: rgba(10, 20, 20, 0.82);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1681,6 +1683,10 @@ button, input, select, textarea {
   gap: 8px;
   z-index: 2;
   transition: background-color 0.3s;
+}
+
+.centerpiece-card:hover .centerpiece-wordmark-overlay {
+  background-color: rgba(10, 20, 20, 0.7);
 }
 
 .centerpiece-card:hover .centerpiece-wordmark-overlay {
@@ -2018,7 +2024,7 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   GIANT KINETIC FOOTER MARQUEE & 4-COLUMN FOOTER (Resorto 1:1)
+   GIANT FOOTER MARQUEE
    ========================================================================== */
 .giant-marquee-section {
   background-color: var(--background);
@@ -2028,11 +2034,6 @@ button, input, select, textarea {
   overflow: hidden;
   position: relative;
   user-select: none;
-  cursor: grab;
-}
-
-.giant-marquee-section:active {
-  cursor: grabbing;
 }
 
 .giant-marquee-track-wrapper {
@@ -2041,13 +2042,33 @@ button, input, select, textarea {
   overflow: hidden;
 }
 
+/* --------------------------------------------------------------------------
+   👉 ADJUST GIANT TEXT MARQUEE SPEED HERE:
+   - Change '22s' to a HIGHER number (e.g., 28s, 35s) to make it SLOWER
+   - Change '22s' to a LOWER number (e.g., 14s, 18s) to make it FASTER
+   -------------------------------------------------------------------------- */
 .giant-marquee-text {
   display: flex;
   align-items: center;
   gap: 48px;
   width: max-content;
   white-space: nowrap;
+  animation: giantMarqueeScroll 22s linear infinite; /* 👈 ADJUST SPEED HERE */
   will-change: transform;
+}
+
+/* Pause smoothly when hovered or touched */
+.giant-marquee-section:hover .giant-marquee-text {
+  animation-play-state: paused;
+}
+
+@keyframes giantMarqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .giant-marquee-word {
