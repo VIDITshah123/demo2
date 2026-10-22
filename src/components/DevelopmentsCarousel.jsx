@@ -54,33 +54,52 @@ export default function DevelopmentsCarousel({ onSelectProject }) {
                   <img src={project.image} alt={project.title} className="room-card-img" />
                   
                   <div className="room-card-overlay">
-                    <div className="room-title-price">
-                      <h3 className="room-card-title">{project.title}</h3>
-                      <div className="room-card-price">
-                        {project.startingPrice}
-                        {project.oldPrice && <s>{project.oldPrice}</s>}
-                        {' '}/ Starting
+                    {/* Location & Developer Tag */}
+                    <div className="room-card-location-tag">
+                      <i className="fa-solid fa-location-dot" />
+                      <span>{project.location} • {project.developer}</span>
+                    </div>
+
+                    {/* Project Title */}
+                    <h3 className="room-card-title">{project.title}</h3>
+
+                    {/* Starting Price & Old Price Row */}
+                    <div className="room-card-price-row">
+                      <span className="room-price-val">{project.startingPrice}</span>
+                      {project.oldPrice && <span className="room-price-old">{project.oldPrice}</span>}
+                      <span className="room-price-badge">Starting Price</span>
+                    </div>
+
+                    {/* Dedicated Specs Row with Frosted Badges */}
+                    <div className="room-specs-row">
+                      <div className="room-spec-pill">
+                        <i className="fa-solid fa-bed" />
+                        <span>{project.beds}</span>
+                      </div>
+                      <div className="room-spec-pill">
+                        <i className="fa-solid fa-bath" />
+                        <span>{project.baths}</span>
+                      </div>
+                      <div className="room-spec-pill">
+                        <i className="fa-solid fa-water" />
+                        <span>{project.highlight}</span>
                       </div>
                     </div>
                     
                     <div className="room-card-divider" />
                     
+                    {/* Action Footer (Full Width on Mobile) */}
                     <div className="room-card-footer">
                       <button 
-                        className="primary-button"
+                        className="room-details-cta-btn"
                         onClick={(e) => {
                           e.stopPropagation();
                           if (onSelectProject) onSelectProject(project);
                         }}
                       >
-                        VIEW DETAILS
+                        <span>VIEW DETAILS & PRICING</span>
+                        <i className="fa-solid fa-arrow-right" />
                       </button>
-
-                      <div className="room-specs-row">
-                        <div className="room-spec-item"><i className="fa-solid fa-bed" /> {project.beds}</div>
-                        <div className="room-spec-item"><i className="fa-solid fa-bath" /> {project.baths}</div>
-                        <div className="room-spec-item"><i className="fa-solid fa-water" /> {project.highlight}</div>
-                      </div>
                     </div>
                   </div>
                 </div>
