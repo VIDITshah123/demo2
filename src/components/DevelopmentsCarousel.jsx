@@ -25,8 +25,8 @@ export default function DevelopmentsCarousel({ onSelectProject }) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="section-tag">ROOMS & SUITES</div>
-          <h2 className="section-heading">CHECK OUR LUXARY ROOMS</h2>
+          <div className="section-tag">CURATED PORTFOLIO</div>
+          <h2 className="section-heading">EXPLORE LUXURY DEVELOPMENTS</h2>
         </motion.div>
 
         <div className="rooms-carousel-wrapper">

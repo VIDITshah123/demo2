@@ -80,7 +80,9 @@ export default function App() {
         target.closest('.room-card-slide') ||
         target.closest('.package-panel') ||
         target.closest('.facility-column') ||
-        target.closest('.gallery-tile')
+        target.closest('.gallery-tile') ||
+        target.closest('.gallery-scroll-item') ||
+        target.closest('.testimonial-card')
       ) {
         setIsHovering(true);
       } else {
